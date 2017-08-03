@@ -4,10 +4,21 @@ import TweetWall from './TweetWall';
 import { getTweets }from '../lib/mockAPI';
 
 class App extends React.Component {
+  componentWillMount() {
+    this.fetchTweets()
+  }
+
+  componentDidMount() {
+    this.startInterval()
+  }
+
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
 
   constructor() {
     super();
-    
+
     this.state = {
       latestTweets: []
     };
